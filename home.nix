@@ -343,7 +343,7 @@
   fonts.fontconfig.enable = true;
 
   home.activation.emacsConfig = lib.hm.dag.entryAfter [ "installPackages" ] ''
-    PATH="${config.home.path}/bin:$PATH" $DRY_RUN_CMD emacs --debug-init -u $USER'';
+    PATH="${config.home.path}/bin:$PATH" $DRY_RUN_CMD emacs --debug-init --batch -u $USER'';
 
   services.emacs = {
     enable = true;
