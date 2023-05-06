@@ -15,6 +15,7 @@
   };
 
   home.packages = with pkgs; [
+    nnn
     git
     bat
     htop
@@ -26,7 +27,6 @@
     pandoc
     xsel
     ranger
-    kitty
     tmux
     emacs
     plantuml
@@ -35,6 +35,12 @@
     opam
     julia
     libvterm-neovim
+    texlive.combined.scheme-full
+    direnv
+    feh
+    w3m
+    ueberzug
+    emacs-all-the-icons-fonts
   ];
 
 
@@ -312,11 +318,21 @@
     };
   };
 
-
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
   };
+
+
+  home.file.".config/ranger/rifle.conf".text = ''
+    !mime ^text, label editor, ext org, ext tex = emacsclient -c "$@"
+    else = xdg-open "$@"
+  '';
+
+  home.file.".config/ranger/rc.conf".text = ''
+    set preview_images true
+    set preview_images_method ueberzug
+  '';
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -329,7 +345,8 @@
   home.stateVersion = "22.11";
 
   home.sessionVariables = {
-    EDITOR="emacsclient";
+    EDITOR="emacsclient -nw";
+    VISUAL="emacsclient";
     TERM="xterm-256color";
   };
 
