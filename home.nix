@@ -41,7 +41,7 @@
     w3m
     ueberzug
     emacs-all-the-icons-fonts
-    (python38.withPackages(ps: with ps; [
+    (python310.withPackages(ps: with ps; [
       virtualenvwrapper
       setuptools
       flake8
