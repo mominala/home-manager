@@ -30,7 +30,7 @@
     };
     tmux-suspend = {
       flake = false;
-      url = "github:muniftanjim/tmux-suspend";
+      url = "github:MunifTanjim/tmux-suspend";
     };
     emacs-config = {
       flake = false;
@@ -45,7 +45,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       suspend = pkgs.tmuxPlugins.mkTmuxPlugin {
-        pluginName = "tmux-suspend";
+        pluginName = "suspend";
         version = "1.0";
         src = tmux-suspend;
       };

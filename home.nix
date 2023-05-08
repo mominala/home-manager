@@ -41,6 +41,18 @@
     w3m
     ueberzug
     emacs-all-the-icons-fonts
+    (python38.withPackages(ps: with ps; [
+      virtualenvwrapper
+      setuptools
+      flake8
+      yapf
+      black
+      autopep8
+      numpy
+      pandas
+      opencv4
+      jupyter
+    ]))
   ];
 
 
@@ -112,6 +124,19 @@
     export WORKON_HOME="~/.virtualenvs/"
     export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
     source ~/.local/bin/virtualenvwrapper.sh
+
+
+    vterm_printf() {
+    if [ -n "''${TMUX}" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "''${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+    }
     '';
   };
 
@@ -126,7 +151,7 @@
     # mouse= true;
     extraConfig = ''
     set -g prefix C-b
-    bind-key -n C-a send-prefix
+    bind-key -n C-b send-prefix
 
     set -g buffer-limit 20
     set -g display-time 1500
@@ -234,6 +259,7 @@
     set -g @continuum-save-interval '15'
     set -g @continuum-restore 'on'
 
+    set -g @suspend_key 'ESC'
     '';
 
     plugins = with pkgs.tmuxPlugins; [
@@ -244,6 +270,7 @@
       open
       resurrect
       continuum
+      mode-indicator
       suspend
     ];
   };
