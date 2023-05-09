@@ -15,6 +15,10 @@
   };
 
   home.packages = with pkgs; [
+    # doesn't work well for now
+    # clang
+    # clang-tools
+    poetry
     nnn
     git
     bat
@@ -41,6 +45,7 @@
     w3m
     ueberzug
     emacs-all-the-icons-fonts
+    syncthing
     (python310.withPackages(ps: with ps; [
       virtualenvwrapper
       setuptools
@@ -215,6 +220,7 @@
     bind X kill-window
     bind C-x confirm-before -p "kill other windows? (y/n)" "kill-window -a"
     bind Q confirm-before -p "kill-session #S? (y/n)" kill-session
+
 
 
     # Detach from session

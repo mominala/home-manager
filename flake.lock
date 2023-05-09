@@ -3,11 +3,11 @@
     "emacs-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1683382181,
-        "narHash": "sha256-i3QXB5BGo841ohbLo3moWiUpHKot5mGeBP7k5gToKoc=",
+        "lastModified": 1683593834,
+        "narHash": "sha256-oIH9Q8Itgst6XcKug1HJke8QXXYhy9kBAXKLPp6UZQQ=",
         "owner": "mominala",
         "repo": ".emacs.d",
-        "rev": "7071fb9528d47d94e30281f714d813268b424716",
+        "rev": "676597bd62f443144471c3d4a37b77948874ac6a",
         "type": "github"
       },
       "original": {
@@ -40,11 +40,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683496796,
-        "narHash": "sha256-MgC6q2tEFM0uPB/kt+MYQSrnuLnTTvIFziZSDJCloQ4=",
+        "lastModified": 1683543852,
+        "narHash": "sha256-aS9qNcg9GwSYFLCWa3Lw+2nVPG11mmQ3B7Oka1hh04M=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "78ceec68f29ed56d6118617e9f0f588bf164067f",
+        "rev": "3f3fa731ad0f99741d4dc98e8e1287b45e30b452",
         "type": "github"
       },
       "original": {
