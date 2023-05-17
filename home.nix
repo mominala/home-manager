@@ -7,12 +7,6 @@
   home.username = "malaoui";
   home.homeDirectory = "/home/malaoui";
 
-  home.file = {
-    ".emacs.d" = {
-      source = emacs-config;
-      recursive = true;
-    };
-  };
 
   home.packages = with pkgs; [
     # doesn't work well for now
@@ -49,6 +43,7 @@
     (python310.withPackages(ps: with ps; [
       virtualenvwrapper
       setuptools
+      pip
       flake8
       yapf
       black
@@ -395,6 +390,14 @@
   programs.fzf.tmux.enableShellIntegration = true;
   programs.fzf.enableZshIntegration = true;
   fonts.fontconfig.enable = true;
+
+  home.file = {
+    ".emacs.d" = {
+      source = emacs-config;
+      recursive = true;
+    };
+  };
+
 
   home.activation.emacsConfig = lib.hm.dag.entryAfter [ "installPackages" ] ''
     PATH="${config.home.path}/bin:$PATH" $DRY_RUN_CMD emacs --debug-init --batch -u $USER'';
