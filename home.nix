@@ -12,6 +12,8 @@
     # doesn't work well for now
     # clang
     # clang-tools
+    # openssh
+    mutagen
     poetry
     nnn
     git
@@ -52,6 +54,8 @@
       pandas
       opencv4
       jupyter
+      pip
+      pipx
     ]))
   ];
 
@@ -125,7 +129,6 @@
     export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3"
     source ~/.local/bin/virtualenvwrapper.sh
 
-
     vterm_printf() {
     if [ -n "''${TMUX}" ] && ([ "''${TERM%%-*}" = "tmux" ] || [ "''${TERM%%-*}" = "screen" ]); then
         # Tell tmux to pass the escape sequences through
@@ -148,7 +151,7 @@
     escapeTime = 0;
     aggressiveResize = true;
     keyMode= "emacs";
-    # mouse= true;
+    mouse= true;
     extraConfig = ''
     set -g prefix C-b
     bind-key -n C-b send-prefix
@@ -390,6 +393,13 @@
   programs.fzf.tmux.enableShellIntegration = true;
   programs.fzf.enableZshIntegration = true;
   fonts.fontconfig.enable = true;
+
+  programs.direnv = {
+      enable = true;
+      nix-direnv = {
+        enable = true;
+      };
+  };
 
   home.file = {
     ".emacs.d" = {
