@@ -13,6 +13,7 @@
     # clang
     # clang-tools
     # openssh
+    nvtop
     mutagen
     poetry
     nnn
