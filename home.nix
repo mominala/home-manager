@@ -28,7 +28,7 @@
     xsel
     ranger
     tmux
-    emacs
+    emacs29
     plantuml
     haskell-language-server
     nodePackages.bash-language-server
