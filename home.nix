@@ -3,7 +3,6 @@
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-
   home.username = "malaoui";
   home.homeDirectory = "/home/malaoui";
 
@@ -13,7 +12,7 @@
     # clang
     # clang-tools
     # openssh
-    nvtop
+    # nixgl # should buid with --impure
     mutagen
     poetry
     nnn

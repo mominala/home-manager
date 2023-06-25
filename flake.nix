@@ -36,14 +36,18 @@
       flake = false;
       url = "github:mominala/.emacs.d/literate";
     };
-
+    nixgl.url = "github:guibou/nixGL";
 
   };
 
-  outputs = { nixpkgs, home-manager, enhancd, zsh-syntax-highlighting, zsh-autosuggestions, spaceship-prompt, zsh-completions, tmux-suspend, emacs-config, ... }:
+  outputs = { nixgl, nixpkgs, home-manager, enhancd, zsh-syntax-highlighting, zsh-autosuggestions, spaceship-prompt, zsh-completions, tmux-suspend, emacs-config, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ nixgl.overlay ];
+      };
       suspend = pkgs.tmuxPlugins.mkTmuxPlugin {
         pluginName = "suspend";
         version = "1.0";
@@ -58,7 +62,7 @@
         modules = [
           ./home.nix
         ];
-        extraSpecialArgs = { inherit enhancd zsh-syntax-highlighting zsh-autosuggestions zsh-completions spaceship-prompt suspend emacs-config; };
+        extraSpecialArgs = { inherit pkgs enhancd zsh-syntax-highlighting zsh-autosuggestions zsh-completions spaceship-prompt suspend emacs-config; };
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
