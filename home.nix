@@ -13,6 +13,10 @@
     # clang-tools
     # openssh
     # nixgl # should buid with --impure
+    micromamba
+    conda
+    just
+    recoll
     mutagen
     poetry
     nnn
@@ -22,13 +26,14 @@
     tldr
     duf
     fd
+    btop
     ripgrep
     powerline-fonts
     pandoc
     xsel
     ranger
     tmux
-    emacs29
+    emacs
     plantuml
     haskell-language-server
     nodePackages.bash-language-server
@@ -50,12 +55,14 @@
       yapf
       black
       autopep8
+      autoflake
       numpy
       pandas
       opencv4
       jupyter
       pip
       pipx
+      pybind11
     ]))
   ];
 
@@ -276,6 +283,13 @@
       continuum
       mode-indicator
       suspend
+    ];
+  };
+
+  programs.git = {
+    ignores = [
+       "*~"
+       "#*#"
     ];
   };
 
